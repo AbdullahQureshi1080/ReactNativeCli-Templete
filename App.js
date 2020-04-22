@@ -8,107 +8,60 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
-  StatusBar,
+  Button
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const App = () => {
 
-const App: () => React$Node = () => {
+  const buttonPressed = (msg) => {
+    alert("Message: " + msg);
+  }
+
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>I am the </Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+    <View style={styles.mainContainer}>
+      <Text style={styles.Text}>Welcome to RN CLI</Text>
+      <Text style={styles.Text}>Hello from RN CLI</Text>
+      <View style={styles.subContainer}>
+        <View style={styles.buttonContainer}>
+            <Button style={styles.button} title="Button 1" onPress={buttonPressed.bind(this, "Hi from Button 1")} />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button style={styles.button} title="Button 2" onPress={buttonPressed.bind(this, "Hi from Button 2")} />
+        </View>
+      </View>
+      </View>
+  )
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  mainContainer: {
+    alignItems: 'center',
+    justifyContent: "center",
+    flex: 1,
+    fontSize:30,
+    backgroundColor:"crimson",
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  Text: {
+    color:"white",
   },
-  body: {
-    backgroundColor: Colors.white,
+  subContainer:{
+     fontSize:30,
+     display:"flex",
+     flexDirection:"row",
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  buttonContainer:{
+    padding:10,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  button:{
+    backgroundColor:"crimson",
+    width:50,
+    height:50,
   },
 });
+
+
 
 export default App;
